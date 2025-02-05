@@ -2,7 +2,7 @@ name: Daily Selenium Job
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Runs at midnight UTC every day
+    - cron: "0 0 * * *"  # Runs at midnight UTC daily
   workflow_dispatch:  # Allows manual execution
 
 jobs:
@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install selenium  # Ensure selenium is installed
           sudo apt-get update && sudo apt-get install -y google-chrome-stable
 
       - name: Run Selenium script
